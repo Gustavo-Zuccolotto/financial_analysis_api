@@ -2,9 +2,12 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { serve } from '@hono/node-server'
 import { authMiddleware } from './middleware/auth'
-import projects from './routes/projects'
+import projects  from './routes/projects'
 import dashboard from './routes/dashboard'
 import member    from './routes/member'
+import empresas  from './routes/empresas'
+import contratos from './routes/contratos'
+import formData  from './routes/formData'
 
 const app = new Hono()
 
@@ -19,6 +22,9 @@ app.use('/api/*', authMiddleware)
 app.route('/api/projects', projects)
 app.route('/api/dashboard', dashboard)
 app.route('/api/member-dashboard', member)
+app.route('/api/empresas',   empresas)
+app.route('/api/contratos',  contratos)
+app.route('/api/form-data',  formData)
 
 // Bind HTTP server for local development
 if (process.env.NODE_ENV !== 'production') {
