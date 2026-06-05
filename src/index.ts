@@ -8,6 +8,8 @@ import member    from './routes/member'
 import empresas  from './routes/empresas'
 import contratos from './routes/contratos'
 import formData  from './routes/formData'
+import alocacao  from './routes/alocacao'
+import clockify  from './routes/clockify'
 
 const app = new Hono()
 
@@ -25,6 +27,8 @@ app.route('/api/member-dashboard', member)
 app.route('/api/empresas',   empresas)
 app.route('/api/contratos',  contratos)
 app.route('/api/form-data',  formData)
+app.route('/api/alocacao',       alocacao)
+app.route('/api/clockify-sync',  clockify)
 
 // Bind HTTP server for local development
 if (process.env.NODE_ENV !== 'production') {
