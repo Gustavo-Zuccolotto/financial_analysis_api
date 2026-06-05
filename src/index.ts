@@ -3,6 +3,8 @@ import { cors } from 'hono/cors'
 import { serve } from '@hono/node-server'
 import { authMiddleware } from './middleware/auth'
 import projects from './routes/projects'
+import dashboard from './routes/dashboard'
+import member    from './routes/member'
 
 const app = new Hono()
 
@@ -15,6 +17,8 @@ app.use('/api/*', authMiddleware)
 
 // Mount sub-routers
 app.route('/api/projects', projects)
+app.route('/api/dashboard', dashboard)
+app.route('/api/member-dashboard', member)
 
 // Bind HTTP server for local development
 if (process.env.NODE_ENV !== 'production') {
